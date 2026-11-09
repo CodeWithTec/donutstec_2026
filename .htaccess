@@ -1,0 +1,81 @@
+# ============================================================
+# DonutsTecLiberia — Root .htaccess
+# ============================================================
+
+Options -Indexes
+Options +FollowSymLinks
+
+# Default charset
+AddDefaultCharset UTF-8
+
+# ---------- Security: block sensitive files ----------
+<FilesMatch "\.(sql|md|log|env|ini|sh|bak|swp)$">
+    Require all denied
+</FilesMatch>
+
+# Block direct access to config + database + logs
+RedirectMatch 403 ^/donutstec/config/
+RedirectMatch 403 ^/donutstec/database/
+RedirectMatch 403 ^/donutstec/logs/
+
+# ---------- Security headers ----------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    # CSP is aggressive — uncomment only after testing
+    # Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://chart.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://chart.googleapis.com;"
+</IfModule>
+
+# ---------- Compression ----------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ---------- Caching ----------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# ---------- Clean URLs ----------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /donutstec/
+
+    # Skip if file/dir exists
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Prevent rewriting anything that starts with /public/, /admin/, /client/, /assets/, /includes/
+    RewriteCond %{REQUEST_URI} !^/donutstec/(public|admin|client|assets|includes|database|config|logs)/
+    
+    # Blog post: /blog/my-slug → /public/blog-post.php?slug=my-slug
+    RewriteRule ^blog/([a-z0-9\-]+)/?$ public/blog-post.php?slug=$1 [L,QSA]
+
+    # Section pages: /services → /public/services.php, etc.
+    RewriteRule ^(services|portfolio|blog|about|contact|quote|login|register|forgot-password|reset-password)/?$ public/$1.php [L,QSA]
+
+    # Root
+    RewriteRule ^$ public/index.php [L,QSA]
+</IfModule>
+
+# ---------- Custom error pages ----------
+ErrorDocument 404 /donutstec/public/404.php
+ErrorDocument 500 /donutstec/public/500.php
+
+# ---------- Block PHP execution in uploads ----------
+<Directory "assets/uploads">
+    <FilesMatch "\.(php|phtml|phar|pl|py|cgi|asp|jsp|sh)$">
+        Require all denied
+    </FilesMatch>
+</Directory>

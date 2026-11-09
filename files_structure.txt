@@ -1,0 +1,37 @@
+donutstec/
+├── config/
+│   ├── database.php
+│   └── config.php
+├── includes/
+│   ├── header.php
+│   ├── footer.php
+│   ├── functions.php
+│   └── auth.php
+├── admin/
+│   ├── dashboard.php
+│   ├── projects.php
+│   ├── messages.php
+│   ├── ... (all admin pages)
+│   └── includes/
+├── client/
+│   ├── dashboard.php
+│   ├── projects.php
+│   ├── messages.php
+│   └── ...
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── img/
+│   └── uploads/
+├── public/
+│   ├── index.php
+│   ├── about.php
+│   ├── services.php
+│   ├── portfolio.php
+│   ├── blog.php
+│   ├── contact.php
+│   ├── login.php
+│   └── register.php
+├── database/
+│   └── schema.sql
+└── .htaccess

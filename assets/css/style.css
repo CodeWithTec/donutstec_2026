@@ -1,0 +1,222 @@
+/* ============================================================
+   DonutsTecLiberia — Global Styles
+   Palette: #151B54 | #0000FF | #1E90FF | #82CAFF
+   ============================================================ */
+
+:root {
+  --dtc-night:  #151B54;
+  --dtc-blue:   #0000FF;
+  --dtc-dodger: #1E90FF;
+  --dtc-sky:    #82CAFF;
+  --dtc-bg:     #F8F9FC;
+  --dtc-text:   #212529;
+  --dtc-muted:  #6C757D;
+  --dtc-shadow: 0 4px 20px rgba(21, 27, 84, 0.08);
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--dtc-bg);
+  color: var(--dtc-text);
+}
+
+/* ---------- Navbar ---------- */
+.navbar-dtc {
+  background: var(--dtc-night);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.navbar-dtc .navbar-brand {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.navbar-dtc .navbar-brand span { color: var(--dtc-dodger); }
+.navbar-dtc .nav-link {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar-dtc .nav-link:hover,
+.navbar-dtc .nav-link.active { color: var(--dtc-sky); }
+
+/* ---------- Buttons ---------- */
+.btn-dtc-primary {
+  background: var(--dtc-blue);
+  border-color: var(--dtc-blue);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-dtc-primary:hover {
+  background: var(--dtc-dodger);
+  border-color: var(--dtc-dodger);
+  color: #fff;
+}
+.btn-dtc-accent {
+  background: var(--dtc-dodger);
+  border-color: var(--dtc-dodger);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-dtc-accent:hover {
+  background: var(--dtc-blue);
+  border-color: var(--dtc-blue);
+  color: #fff;
+}
+.btn-dtc-outline {
+  background: transparent;
+  border: 2px solid var(--dtc-sky);
+  color: var(--dtc-night);
+  font-weight: 600;
+}
+.btn-dtc-outline:hover {
+  background: var(--dtc-sky);
+  color: var(--dtc-night);
+}
+
+/* ---------- Auth pages ---------- */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dtc-night) 0%, var(--dtc-dodger) 100%);
+  padding: 2rem 1rem;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  max-width: 460px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+}
+.auth-card .brand-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--dtc-night);
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.auth-card .brand-logo span { color: var(--dtc-dodger); }
+.auth-card .brand-sub {
+  text-align: center;
+  color: var(--dtc-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+.auth-card .form-label {
+  font-weight: 600;
+  color: var(--dtc-night);
+  font-size: 0.9rem;
+}
+.auth-card .form-control:focus {
+  border-color: var(--dtc-dodger);
+  box-shadow: 0 0 0 0.2rem rgba(30,144,255,0.2);
+}
+
+/* ---------- Hero ---------- */
+.hero-dtc {
+  background: linear-gradient(135deg, var(--dtc-night) 0%, var(--dtc-blue) 100%);
+  color: #fff;
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-dtc::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: -80px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(130,202,255,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-dtc h1 { font-weight: 800; line-height: 1.2; }
+.hero-dtc .lead { color: var(--dtc-sky); font-size: 1.15rem; }
+
+/* ---------- Cards ---------- */
+.card-dtc {
+  border: 1px solid rgba(130, 202, 255, 0.5);
+  border-radius: 12px;
+  box-shadow: var(--dtc-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.card-dtc:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(21, 27, 84, 0.15);
+}
+.card-dtc .card-icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--dtc-dodger), var(--dtc-blue));
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Footer ---------- */
+.footer-dtc {
+  background: var(--dtc-night);
+  color: rgba(255,255,255,0.75);
+  padding: 3rem 0 1.5rem;
+  margin-top: 4rem;
+}
+.footer-dtc h5 { color: #fff; font-weight: 700; }
+.footer-dtc a { color: var(--dtc-sky); text-decoration: none; }
+.footer-dtc a:hover { color: #fff; }
+
+/* ---------- Progress bars ---------- */
+.progress {
+  height: 8px;
+  border-radius: 6px;
+  background: #E9ECF5;
+}
+.progress-bar-dtc {
+  background: linear-gradient(90deg, var(--dtc-dodger), var(--dtc-blue));
+}
+
+/* ---------- Badges ---------- */
+.badge-dtc-dodger { background: var(--dtc-dodger); }
+.badge-dtc-sky    { background: var(--dtc-sky); color: var(--dtc-night); }
+.badge-dtc-night  { background: var(--dtc-night); }
+
+/* ---------- Utility ---------- */
+.text-dtc-night   { color: var(--dtc-night) !important; }
+.text-dtc-dodger  { color: var(--dtc-dodger) !important; }
+.text-dtc-sky     { color: var(--dtc-sky) !important; }
+.bg-dtc-night     { background: var(--dtc-night) !important; }
+.bg-dtc-dodger    { background: var(--dtc-dodger) !important; }
+.bg-dtc-sky       { background: var(--dtc-sky) !important; }
+
+
+
+
+
+/* Rotating logo */
+.logo-rotate {
+    animation: rotateLogo 5s linear infinite;
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* media query for responsive design for the home page buttons */
+@media (max-width: 991.98px) {
+  .hero-dtc .btn {
+    /* width: 100%; */
+    margin-bottom: 1rem;
+
+  }
+}

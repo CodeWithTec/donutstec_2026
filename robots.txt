@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /client/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /database/
+Disallow: /logs/
+Disallow: /vendor/
+
+Sitemap: http://localhost:8080/donutstec/sitemap.php
